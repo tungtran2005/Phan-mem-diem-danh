@@ -6,12 +6,12 @@ namespace Phan_mem_diem_danh.Views;
 
 public partial class LoginScreen : Form
 {
-    private readonly Configuration _configuration;
-    
+    AuthService authService;
     public LoginScreen(Configuration configuration)
     {
-        _configuration = configuration;
         InitializeComponent();
+        authService = configuration.AuthService;
+
     }
 
     private void LoginScreen_Load(object sender, EventArgs e)
@@ -21,10 +21,17 @@ public partial class LoginScreen : Form
 
     private void button1_Click(object sender, EventArgs e)
     {
-        string msv = txtMSV.Text.Trim();
-        string password = txtPassword.Text.Trim();
+        try
+        {
+            string msv = txtMSV.Text.Trim();
+            string password = txtPassword.Text.Trim();
+            var account = authService.Login(msv, password);
 
-        var account = _configuration.AuthService.Login(msv, password);
-        
+            MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message, "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        } 
     }
 }
