@@ -25,4 +25,8 @@ public class ClassService
         }
         return classList;
     }
+    public List<Class> GetAllClasses()
+    {
+        return _configuration.ClassRepository.List();
+    }
 }

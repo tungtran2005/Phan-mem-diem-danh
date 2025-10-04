@@ -32,7 +32,7 @@ public partial class ClassListScreen : Form
 
     private void btnViewAll_Click(object sender, EventArgs e)
     {
-        var classList = _configuration.ClassRepository.List();
+        var classList = _configuration.ClassService.GetAllClasses();
         ShowClasses(classList);
     }
 }
