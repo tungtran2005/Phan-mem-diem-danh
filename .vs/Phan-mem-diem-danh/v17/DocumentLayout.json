@@ -1,0 +1,151 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\KY1_N3\\LTTQ\\BTL\\Phan-mem-diem-danh\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B34FE42D-F705-40A7-A86F-0E1E6DD568D3}|Phan-mem-diem-danh\\Phan-mem-diem-danh.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\ky1_n3\\lttq\\btl\\phan-mem-diem-danh\\phan-mem-diem-danh\\views\\classlistscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B34FE42D-F705-40A7-A86F-0E1E6DD568D3}|Phan-mem-diem-danh\\Phan-mem-diem-danh.csproj|solutionrelative:phan-mem-diem-danh\\views\\classlistscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B34FE42D-F705-40A7-A86F-0E1E6DD568D3}|Phan-mem-diem-danh\\Phan-mem-diem-danh.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\ky1_n3\\lttq\\btl\\phan-mem-diem-danh\\phan-mem-diem-danh\\views\\classlistscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B34FE42D-F705-40A7-A86F-0E1E6DD568D3}|Phan-mem-diem-danh\\Phan-mem-diem-danh.csproj|solutionrelative:phan-mem-diem-danh\\views\\classlistscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B34FE42D-F705-40A7-A86F-0E1E6DD568D3}|Phan-mem-diem-danh\\Phan-mem-diem-danh.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\ky1_n3\\lttq\\btl\\phan-mem-diem-danh\\phan-mem-diem-danh\\database\\repositories\\accountclassrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B34FE42D-F705-40A7-A86F-0E1E6DD568D3}|Phan-mem-diem-danh\\Phan-mem-diem-danh.csproj|solutionrelative:phan-mem-diem-danh\\database\\repositories\\accountclassrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B34FE42D-F705-40A7-A86F-0E1E6DD568D3}|Phan-mem-diem-danh\\Phan-mem-diem-danh.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\ky1_n3\\lttq\\btl\\phan-mem-diem-danh\\phan-mem-diem-danh\\services\\classservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B34FE42D-F705-40A7-A86F-0E1E6DD568D3}|Phan-mem-diem-danh\\Phan-mem-diem-danh.csproj|solutionrelative:phan-mem-diem-danh\\services\\classservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B34FE42D-F705-40A7-A86F-0E1E6DD568D3}|Phan-mem-diem-danh\\Phan-mem-diem-danh.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\ky1_n3\\lttq\\btl\\phan-mem-diem-danh\\phan-mem-diem-danh\\database\\repositories\\classrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B34FE42D-F705-40A7-A86F-0E1E6DD568D3}|Phan-mem-diem-danh\\Phan-mem-diem-danh.csproj|solutionrelative:phan-mem-diem-danh\\database\\repositories\\classrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B34FE42D-F705-40A7-A86F-0E1E6DD568D3}|Phan-mem-diem-danh\\Phan-mem-diem-danh.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\ky1_n3\\lttq\\btl\\phan-mem-diem-danh\\phan-mem-diem-danh\\database\\entities\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B34FE42D-F705-40A7-A86F-0E1E6DD568D3}|Phan-mem-diem-danh\\Phan-mem-diem-danh.csproj|solutionrelative:phan-mem-diem-danh\\database\\entities\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 1417,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Account.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\KY1_N3\\LTTQ\\BTL\\Phan-mem-diem-danh\\Phan-mem-diem-danh\\Database\\Entities\\Account.cs",
+              "RelativeDocumentMoniker": "Phan-mem-diem-danh\\Database\\Entities\\Account.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\KY1_N3\\LTTQ\\BTL\\Phan-mem-diem-danh\\Phan-mem-diem-danh\\Database\\Entities\\Account.cs",
+              "RelativeToolTip": "Phan-mem-diem-danh\\Database\\Entities\\Account.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T08:50:12.119Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ClassRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\KY1_N3\\LTTQ\\BTL\\Phan-mem-diem-danh\\Phan-mem-diem-danh\\Database\\Repositories\\ClassRepository.cs",
+              "RelativeDocumentMoniker": "Phan-mem-diem-danh\\Database\\Repositories\\ClassRepository.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\KY1_N3\\LTTQ\\BTL\\Phan-mem-diem-danh\\Phan-mem-diem-danh\\Database\\Repositories\\ClassRepository.cs",
+              "RelativeToolTip": "Phan-mem-diem-danh\\Database\\Repositories\\ClassRepository.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAcwEoAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T08:45:47.65Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ClassListScreen.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\KY1_N3\\LTTQ\\BTL\\Phan-mem-diem-danh\\Phan-mem-diem-danh\\Views\\ClassListScreen.cs",
+              "RelativeDocumentMoniker": "Phan-mem-diem-danh\\Views\\ClassListScreen.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\KY1_N3\\LTTQ\\BTL\\Phan-mem-diem-danh\\Phan-mem-diem-danh\\Views\\ClassListScreen.cs [Design]",
+              "RelativeToolTip": "Phan-mem-diem-danh\\Views\\ClassListScreen.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T08:34:17.667Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ClassListScreen.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\KY1_N3\\LTTQ\\BTL\\Phan-mem-diem-danh\\Phan-mem-diem-danh\\Views\\ClassListScreen.cs",
+              "RelativeDocumentMoniker": "Phan-mem-diem-danh\\Views\\ClassListScreen.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\KY1_N3\\LTTQ\\BTL\\Phan-mem-diem-danh\\Phan-mem-diem-danh\\Views\\ClassListScreen.cs",
+              "RelativeToolTip": "Phan-mem-diem-danh\\Views\\ClassListScreen.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T08:28:55.461Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AccountClassRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\KY1_N3\\LTTQ\\BTL\\Phan-mem-diem-danh\\Phan-mem-diem-danh\\Database\\Repositories\\AccountClassRepository.cs",
+              "RelativeDocumentMoniker": "Phan-mem-diem-danh\\Database\\Repositories\\AccountClassRepository.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\KY1_N3\\LTTQ\\BTL\\Phan-mem-diem-danh\\Phan-mem-diem-danh\\Database\\Repositories\\AccountClassRepository.cs",
+              "RelativeToolTip": "Phan-mem-diem-danh\\Database\\Repositories\\AccountClassRepository.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAYwCIAAAB/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T08:21:33.409Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ClassService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\KY1_N3\\LTTQ\\BTL\\Phan-mem-diem-danh\\Phan-mem-diem-danh\\Services\\ClassService.cs",
+              "RelativeDocumentMoniker": "Phan-mem-diem-danh\\Services\\ClassService.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\KY1_N3\\LTTQ\\BTL\\Phan-mem-diem-danh\\Phan-mem-diem-danh\\Services\\ClassService.cs",
+              "RelativeToolTip": "Phan-mem-diem-danh\\Services\\ClassService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T14:57:06.763Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 307,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
