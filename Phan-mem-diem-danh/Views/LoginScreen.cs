@@ -31,7 +31,7 @@ public partial class LoginScreen : Form
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message, "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(ex.Message, "Đăng nhập thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
         } 
     }
 }
