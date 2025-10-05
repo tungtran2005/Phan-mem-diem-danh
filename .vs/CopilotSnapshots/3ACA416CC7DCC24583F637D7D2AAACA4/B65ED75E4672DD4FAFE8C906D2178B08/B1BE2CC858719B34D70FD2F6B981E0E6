@@ -18,7 +18,7 @@ public class AccountClassRepository : BaseRepository<AccountClass, int>
 
     public override List<AccountClass> List()
     {
-        const string sql = "SELECT account_id, class_id, role FROM account_class";
+        const string sql = "SELECT AccountId, ClassId, Role FROM AccountClasses";
         var result = new List<AccountClass>();
 
         using var cmd = new SqlCommand(sql, SqlConnection);
@@ -30,9 +30,9 @@ public class AccountClassRepository : BaseRepository<AccountClass, int>
             {
                 var ac = new AccountClass
                 {
-                    AccountId = reader.GetInt32(reader.GetOrdinal("account_id")),
-                    ClassId = reader.GetInt32(reader.GetOrdinal("class_id")),
-                    Role = reader.IsDBNull(reader.GetOrdinal("role")) ? string.Empty : reader.GetString(reader.GetOrdinal("role"))
+                    AccountId = reader.GetInt32(reader.GetOrdinal("AccountId")),
+                    ClassId = reader.GetInt32(reader.GetOrdinal("ClassId")),
+                    Role = reader.IsDBNull(reader.GetOrdinal("Role")) ? string.Empty : reader.GetString(reader.GetOrdinal("Role"))
                 };
 
                 result.Add(ac);

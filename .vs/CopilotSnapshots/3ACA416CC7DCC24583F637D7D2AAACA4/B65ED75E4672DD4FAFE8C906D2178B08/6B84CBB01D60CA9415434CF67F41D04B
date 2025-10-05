@@ -1,0 +1,84 @@
+﻿using Microsoft.Data.SqlClient;
+using Phan_mem_diem_danh.Database.Entities;
+using Phan_mem_diem_danh.Database.Repositories.Base;
+
+namespace Phan_mem_diem_danh.Database.Repositories;
+
+public class ClassRepository : BaseRepository<Class, int>
+{
+    public override Class Create(Class t)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override Class? Find(int id)
+    {
+        const string sql = "SELECT Id, Name, Subject, Department, StartDate, EndDate FROM Classes WHERE Id = @id";
+        using var cmd = new SqlCommand(sql, SqlConnection);
+        cmd.Parameters.AddWithValue("@id", id);
+
+        SqlConnection.Open();
+        try
+        {
+            using var reader = cmd.ExecuteReader();
+            if (!reader.Read()) return null;
+
+            return new Class
+            {
+                Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                Name = reader.GetString(reader.GetOrdinal("Name")),
+                Subject = reader.IsDBNull(reader.GetOrdinal("Subject")) ? string.Empty : reader.GetString(reader.GetOrdinal("Subject")),
+                Department = reader.IsDBNull(reader.GetOrdinal("Department")) ? string.Empty : reader.GetString(reader.GetOrdinal("Department")),
+                StartDate = reader.IsDBNull(reader.GetOrdinal("StartDate")) ? DateTime.MinValue : reader.GetDateTime(reader.GetOrdinal("StartDate")),
+                EndDate = reader.IsDBNull(reader.GetOrdinal("EndDate")) ? DateTime.MinValue : reader.GetDateTime(reader.GetOrdinal("EndDate"))
+            };
+        }
+        finally
+        {
+            SqlConnection.Close();
+        }
+    }
+
+    public override List<Class> List()
+    {
+        const string sql = "SELECT Id, Name, Subject, Department, StartDate, EndDate FROM Classes";
+        var result = new List<Class>();
+
+        using var cmd = new SqlCommand(sql, SqlConnection);
+        SqlConnection.Open();
+        try
+        {
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                var c = new Class
+                {
+                    Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                    Name = reader.GetString(reader.GetOrdinal("Name")),
+                    Subject = reader.IsDBNull(reader.GetOrdinal("Subject")) ? string.Empty : reader.GetString(reader.GetOrdinal("Subject")),
+                    Department = reader.IsDBNull(reader.GetOrdinal("Department")) ? string.Empty : reader.GetString(reader.GetOrdinal("Department")),
+                    StartDate = reader.IsDBNull(reader.GetOrdinal("StartDate")) ? DateTime.MinValue : reader.GetDateTime(reader.GetOrdinal("StartDate")),
+                    EndDate = reader.IsDBNull(reader.GetOrdinal("EndDate")) ? DateTime.MinValue : reader.GetDateTime(reader.GetOrdinal("EndDate"))
+                };
+
+                result.Add(c);
+            }
+        }
+        finally
+        {
+            SqlConnection.Close();
+        }
+
+        return result;
+    }
+
+    public override Class Update(Class t)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override bool Delete(int id)
+    {
+        throw new NotImplementedException();
+    }
+}

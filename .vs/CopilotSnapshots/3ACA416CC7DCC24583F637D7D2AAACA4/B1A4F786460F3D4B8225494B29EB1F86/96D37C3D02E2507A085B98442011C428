@@ -1,0 +1,61 @@
+﻿using Microsoft.Data.SqlClient;
+using Phan_mem_diem_danh.Database.Entities;
+using Phan_mem_diem_danh.Database.Repositories.Base;
+using System.Data;
+using System.Data.Common;
+
+namespace Phan_mem_diem_danh.Database.Repositories;
+
+public class ClassRepository : BaseRepository<Class, int>
+{
+    public override Class Create(Class t)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override Class? Find(int id)
+    {
+        const string sql = "SELECT Id, Name, Subject, Department, StartDate, EndDate FROM Classes WHERE Id = @id";
+        using var cmd = new SqlCommand(sql, SqlConnection);
+        cmd.Parameters.AddWithValue("@id", id);
+
+        SqlConnection.Open();
+        try
+        {
+            using var reader = cmd.ExecuteReader();
+            if (!reader.Read())
+                return null;
+
+            var c = new Class
+            {
+                Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                Name = reader.IsDBNull(reader.GetOrdinal("Name")) ? string.Empty : reader.GetString(reader.GetOrdinal("Name")),
+                Subject = reader.IsDBNull(reader.GetOrdinal("Subject")) ? string.Empty : reader.GetString(reader.GetOrdinal("Subject")),
+                Department = reader.IsDBNull(reader.GetOrdinal("Department")) ? string.Empty : reader.GetString(reader.GetOrdinal("Department")),
+                StartDate = reader.IsDBNull(reader.GetOrdinal("StartDate")) ? DateTime.MinValue : reader.GetDateTime(reader.GetOrdinal("StartDate")),
+                EndDate = reader.IsDBNull(reader.GetOrdinal("EndDate")) ? DateTime.MinValue : reader.GetDateTime(reader.GetOrdinal("EndDate"))
+            };
+
+            return c;
+        }
+        finally
+        {
+            SqlConnection.Close();
+        }
+    }
+
+    public override List<Class> List()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override Class Update(Class t)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override bool Delete(int id)
+    {
+        throw new NotImplementedException();
+    }
+}
