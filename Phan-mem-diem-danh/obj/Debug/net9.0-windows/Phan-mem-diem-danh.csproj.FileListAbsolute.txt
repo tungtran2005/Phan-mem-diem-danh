@@ -178,3 +178,7 @@ C:\Users\ADMIN\Documents\C#\LTTQ\Phan-mem-diem-danh\Phan-mem-diem-danh\bin\Debug
 C:\Users\ADMIN\Documents\C#\LTTQ\Phan-mem-diem-danh\Phan-mem-diem-danh\obj\Debug\net9.0-windows\Phan-mem.DC048E1F.Up2Date
 C:\Users\ADMIN\Documents\C#\LTTQ\Phan-mem-diem-danh\Phan-mem-diem-danh\obj\Debug\net9.0-windows\Phan-mem-diem-danh.genruntimeconfig.cache
 C:\Users\ADMIN\Documents\C#\LTTQ\Phan-mem-diem-danh\Phan-mem-diem-danh\obj\Debug\net9.0-windows\ref\Phan-mem-diem-danh.dll
+D:\Custom_C#\Phan-mem-diem-danh\Phan-mem-diem-danh\obj\Debug\net9.0-windows\Phan_mem_diem_danh.Views.LoginScreen.resources
+D:\Custom_C#\Phan-mem-diem-danh\Phan-mem-diem-danh\obj\Debug\net9.0-windows\Phan_mem_diem_danh.Views.SettingScreen.resources
+D:\Custom_C#\Phan-mem-diem-danh\Phan-mem-diem-danh\obj\Debug\net9.0-windows\Phan_mem_diem_danh.Views.StudentFormScreen.resources
+D:\Custom_C#\Phan-mem-diem-danh\Phan-mem-diem-danh\obj\Debug\net9.0-windows\Phan-mem-diem-danh.csproj.GenerateResource.cache

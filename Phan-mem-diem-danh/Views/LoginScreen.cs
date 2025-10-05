@@ -1,16 +1,18 @@
-﻿using System.Configuration;
-using System.Drawing.Text;
+﻿using Phan_mem_diem_danh.Exceptions;
 using Phan_mem_diem_danh.Services;
 
 namespace Phan_mem_diem_danh.Views;
 
 public partial class LoginScreen : Form
 {
-    AuthService authService;
+    private Configuration _configuration;
+    private AuthService _authService;
+    
     public LoginScreen(Configuration configuration)
     {
         InitializeComponent();
-        authService = configuration.AuthService;
+        _configuration = configuration;
+        _authService = configuration.AuthService;
 
     }
 
@@ -25,13 +27,20 @@ public partial class LoginScreen : Form
         {
             string msv = txtMSV.Text.Trim();
             string password = txtPassword.Text.Trim();
-            var account = authService.Login(msv, password);
+            _authService.Login(msv, password);
 
-            MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Hide();
+            _configuration.ClassListScreen.Show();
+        }
+        catch (AppException ex)
+        {
+            Console.Error.WriteLine(ex.Message);
+            MessageBox.Show(ex.Message, "Đăng nhập thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message, "Đăng nhập thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Console.WriteLine(ex.Message);
+            Console.Error.WriteLine(ex.Message);
         } 
     }
 }
