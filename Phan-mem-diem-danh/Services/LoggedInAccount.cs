@@ -1,24 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Phan_mem_diem_danh.Database.Entities;
+﻿using Phan_mem_diem_danh.Database.Entities;
+using Phan_mem_diem_danh.Exceptions;
 
-namespace Phan_mem_diem_danh.Services
+namespace Phan_mem_diem_danh.Services;
+
+public static class LoggedInAccount
 {
-    public static class LoggedInAccount
-    {
-        public static Account _account;
+    private static Account? _instance;
 
-        public static void SetAccount(Account account)
+    public static void SetAccount(Account? account)
+    {
+        if (_instance != null)
         {
-            _account = account;
-        }   
-        public static Account GetAccount()
-        {
-            return _account;
+            throw new AppException("Đã có tài khoản được đăng nhập.");
         }
+        _instance = account;
     }
 
+    public static Account? GetAccount()
+    {
+        if (_instance == null)
+        {
+            throw new AppException("Chưa có tài khoản nào được đăng nhập.");
+        }
+        
+        return _instance;
+    }
+    
+    public static void ClearAccount()
+    {
+        _instance = null;
+    }
+    
+    public static bool IsStudent()
+    {
+        return _instance != null && _instance.Roles.Any(r => r.Name == "Student");
+    }
+    
+    public static bool IsTeacher()
+    {
+        return _instance != null && _instance.Roles.Any(r => r.Name == "Teacher");
+    }
 }

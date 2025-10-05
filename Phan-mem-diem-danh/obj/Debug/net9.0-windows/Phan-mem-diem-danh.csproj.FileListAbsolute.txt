@@ -182,3 +182,5 @@ D:\Custom_C#\Phan-mem-diem-danh\Phan-mem-diem-danh\obj\Debug\net9.0-windows\Phan
 D:\Custom_C#\Phan-mem-diem-danh\Phan-mem-diem-danh\obj\Debug\net9.0-windows\Phan_mem_diem_danh.Views.SettingScreen.resources
 D:\Custom_C#\Phan-mem-diem-danh\Phan-mem-diem-danh\obj\Debug\net9.0-windows\Phan_mem_diem_danh.Views.StudentFormScreen.resources
 D:\Custom_C#\Phan-mem-diem-danh\Phan-mem-diem-danh\obj\Debug\net9.0-windows\Phan-mem-diem-danh.csproj.GenerateResource.cache
+D:\Custom_C#\Phan-mem-diem-danh\Phan-mem-diem-danh\obj\Debug\net9.0-windows\Phan_mem_diem_danh.Views.ClassListScreen.resources
+D:\Custom_C#\Phan-mem-diem-danh\Phan-mem-diem-danh\obj\Debug\net9.0-windows\Phan_mem_diem_danh.Views.StudentListScreen.resources

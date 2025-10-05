@@ -9,7 +9,7 @@ public class Account
     public DateTime Birth { get; set; } = DateTime.Now;
     public string Password { get; set; } = "test";
 
-    public ICollection<Role> AccountRoles { get; set; } = new List<Role>();
+    public ICollection<Role> Roles { get; set; } = new List<Role>();
     public ICollection<AccountClass> AccountClasses { get; set; } = new List<AccountClass>();
     public ICollection<Attendance> Attendances { get; set; } = new List<Attendance>();
 }

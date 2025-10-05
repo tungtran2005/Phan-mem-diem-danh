@@ -1,21 +1,22 @@
 ﻿using Phan_mem_diem_danh.Database.Entities;
+using Phan_mem_diem_danh.Services;
 
 namespace Phan_mem_diem_danh.Views;
 
 public partial class ClassListScreen : Form
 {
     private readonly Configuration _configuration;
+    
     public ClassListScreen(Configuration configuration)
     {
         InitializeComponent();
         _configuration = configuration;
-
-        this.LoadClassList(10);
     }
 
-    public void LoadClassList(int currentAcountId)
+    public void LoadClassList()
     {
-        var classList = _configuration.ClassService.GetClassListByAccountId(currentAcountId);
+        var currentAccountId = LoggedInAccount.GetAccount().Id;
+        var classList = _configuration.ClassService.GetClassListByAccountId(currentAccountId);
         ShowClasses(classList);
     }
     public void ShowClasses(List<Class> classes)

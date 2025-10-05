@@ -58,7 +58,7 @@ public class AccountRepository : BaseRepository<Account, int>
                             Id = reader.GetInt32(0),
                             MSV = reader.GetString(1),                          
                             Password = reader.GetString(2),
-                            AccountRoles = new List<Role>()
+                            Roles = new List<Role>()
                         };
                     }
                     Role role = new Role
@@ -66,7 +66,7 @@ public class AccountRepository : BaseRepository<Account, int>
                         Id = reader.GetInt32(3),
                         Name = reader.GetString(4)
                     };
-                    account.AccountRoles.Add(role);
+                    account.Roles.Add(role);
                 }
             }
             SqlConnection.Close();

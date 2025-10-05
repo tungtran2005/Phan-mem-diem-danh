@@ -6,7 +6,7 @@ namespace Phan_mem_diem_danh.Services;
 
 public class AuthService
 {
-    private AccountRepository accountRepository;
+    private readonly AccountRepository accountRepository;
 
     public AuthService(Configuration configuration)
     {
@@ -17,7 +17,7 @@ public class AuthService
     {
         Account? account = accountRepository.FindByMSVAndPassword(msv, password);
         
-        bool isAccountValid = account != null && account.AccountRoles.Any();
+        bool isAccountValid = account != null && account.Roles.Any();
         if (!isAccountValid)
         {
             throw new AppException("Sai MSV hoặc mật khẩu.");
