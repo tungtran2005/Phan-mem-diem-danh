@@ -23,9 +23,7 @@
       <Compile Update="Views\LoginScreen.cs">
         <SubType>Form</SubType>
       </Compile>
-      <Compile Update="Views\SettingScreen.cs">
-        <SubType>Form</SubType>
-      </Compile>
+      <Compile Update="Views\SettingScreen.cs" />
       <Compile Update="Views\StudentFormScreen.cs">
         <SubType>Form</SubType>
       </Compile>
