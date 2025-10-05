@@ -1,0 +1,58 @@
+﻿using Microsoft.Data.SqlClient;
+using Phan_mem_diem_danh.Database.Entities;
+using Phan_mem_diem_danh.Database.Repositories.Base;
+
+namespace Phan_mem_diem_danh.Database.Repositories;
+
+public class AccountClassRepository : BaseRepository<AccountClass, int>
+{
+    public override AccountClass Create(AccountClass t)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override AccountClass? Find(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override List<AccountClass> List()
+    {
+        const string sql = "SELECT AccountId, ClassId, Role FROM AccountClasses";
+        var result = new List<AccountClass>();
+
+        using var cmd = new SqlCommand(sql, SqlConnection);
+        SqlConnection.Open();
+        try
+        {
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                var ac = new AccountClass
+                {
+                    AccountId = reader.GetInt32(reader.GetOrdinal("AccountId")),
+                    ClassId = reader.GetInt32(reader.GetOrdinal("ClassId")),
+                    Role = reader.IsDBNull(reader.GetOrdinal("Role")) ? string.Empty : reader.GetString(reader.GetOrdinal("Role"))
+                };
+
+                result.Add(ac);
+            }
+        }
+        finally
+        {
+            SqlConnection.Close();
+        }
+
+        return result;
+    }
+
+    public override AccountClass Update(AccountClass t)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override bool Delete(int id)
+    {
+        throw new NotImplementedException();
+    }
+}

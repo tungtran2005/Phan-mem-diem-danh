@@ -1,0 +1,40 @@
+﻿using Phan_mem_diem_danh.Database.Entities;
+using Phan_mem_diem_danh.Database.Repositories;
+
+namespace Phan_mem_diem_danh.Services;
+
+public class ClassService
+{
+    private readonly ClassRepository _classRepo;
+    private readonly AccountClassRepository _accountClassRepo;
+
+    public ClassService(Configuration configuration)
+    {
+        _classRepo = new ClassRepository();
+        _accountClassRepo = new AccountClassRepository();
+    }
+
+    // Return all classes
+    public List<Class> ListAll()
+    {
+        return _classRepo.List();
+    }
+
+    // Return classes related to an account. If roleFilter is null, return all classes the account is part of.
+    public List<Class> ListForAccount(int accountId, string? roleFilter = null)
+    {
+        // get mappings from AccountClass repo then load classes by id
+        var mappings = _accountClassRepo.List()
+            .Where(ac => ac.AccountId == accountId && (roleFilter == null || ac.Role == roleFilter))
+            .ToList();
+
+        var classes = new List<Class>();
+        foreach (var m in mappings)
+        {
+            var c = _classRepo.Find(m.ClassId);
+            if (c != null) classes.Add(c);
+        }
+
+        return classes;
+    }
+}
