@@ -3,25 +3,23 @@ using Phan_mem_diem_danh.Database.Repositories;
 using Phan_mem_diem_danh.Exceptions;
 
 using System.Text.RegularExpressions;
-using Phan_mem_diem_danh.Database.Entities;
 
 namespace Phan_mem_diem_danh.Services;
 
 public class AuthService
 {
-    private readonly AccountRepository accountRepository;
-
-    public AuthService(Configuration configuration)
+    private readonly AccountRepository _accountRepository;
     private readonly Configuration _configuration;
 
     public AuthService(Configuration configuration)
     {
-        accountRepository = configuration.AccountRepository;
+        _configuration = configuration;
+        _accountRepository = configuration.AccountRepository;
     }
 
     public void Login(string msv, string password)
     {
-        Account? account = accountRepository.FindByMSVAndPassword(msv, password);
+        Account? account = _accountRepository.FindByMSVAndPassword(msv, password);
         
         bool isAccountValid = account != null && account.Roles.Any();
         if (!isAccountValid)
@@ -30,13 +28,7 @@ public class AuthService
         }
 
         LoggedInAccount.SetAccount(account);
-        _configuration = configuration;
     }
-
-    // Tài khoản đang đăng nhập (set sau khi login thành công)
-    public Account? CurrentAccount { get; private set; }
-
-    public void SetCurrentAccount(Account account) => CurrentAccount = account;
 
     // - Mật khẩu cũ phải đúng
     // - Mật khẩu mới đúng định dạng (>=8, có chữ hoa, chữ thường, số, ký tự đặc biệt)
@@ -44,7 +36,7 @@ public class AuthService
     // - Cập nhật vào database
     public (bool Success, string Message) ChangePassword(string oldPassword, string newPassword, string confirmPassword)
     {
-        if (CurrentAccount is null)
+        if (LoggedInAccount.GetAccount() is null)
             return (false, "Chưa xác thực người dùng.");
 
         if (string.IsNullOrWhiteSpace(oldPassword) ||
@@ -54,7 +46,7 @@ public class AuthService
             return (false, "Vui lòng nhập đầy đủ thông tin.");
         }
 
-        if (!string.Equals(oldPassword, CurrentAccount.Password, StringComparison.Ordinal))
+        if (!string.Equals(oldPassword, LoggedInAccount.GetAccount().Password, StringComparison.Ordinal))
             return (false, "Mật khẩu cũ không đúng.");
 
         if (!string.Equals(newPassword, confirmPassword, StringComparison.Ordinal))
@@ -71,13 +63,13 @@ public class AuthService
             // Cập nhật DB (tối thiểu chỉ cập nhật Password theo Id)
             var updated = new Account
             {
-                Id = CurrentAccount.Id,
+                Id = LoggedInAccount.GetAccount().Id,
                 Password = newPassword
             };
             _configuration.AccountRepository.Update(updated);
 
             // Cập nhật in-memory
-            CurrentAccount.Password = newPassword;
+            LoggedInAccount.GetAccount().Password = newPassword;
 
             return (true, "Đổi mật khẩu thành công.");
         }

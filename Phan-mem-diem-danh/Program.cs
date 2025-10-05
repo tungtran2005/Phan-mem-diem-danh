@@ -7,6 +7,6 @@ static class Program
     {
         ApplicationConfiguration.Initialize();
         Configuration configuration = new Configuration();
-        Application.Run(configuration.LoginScreen);
+        Application.Run(configuration.SettingScreen);
     }
 }
