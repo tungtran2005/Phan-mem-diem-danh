@@ -20,7 +20,7 @@ CREATE TABLE role (
     name NVARCHAR(50) NOT NULL
 );
 
--- B?ng account_role (nhi?u-nhi?u gi?a account và role)
+-- B?ng account_role (nhi?u-nhi?u gi?a account vï¿½ role)
 CREATE TABLE account_role (
     account_id INT NOT NULL,
     role_id INT NOT NULL,
@@ -39,15 +39,15 @@ CREATE TABLE class (
     end_date DATE NULL
 );
 
--- Ràng bu?c ngày k?t thúc >= ngày b?t ??u
+-- Rï¿½ng bu?c ngï¿½y k?t thï¿½c >= ngï¿½y b?t ??u
 ALTER TABLE class
 ADD CONSTRAINT CK_Class_Date CHECK (end_date IS NULL OR end_date >= start_date);
 
--- B?ng account_class (nhi?u-nhi?u gi?a account và class, có thêm role)
+-- B?ng account_class (nhi?u-nhi?u gi?a account vï¿½ class, cï¿½ thï¿½m role)
 CREATE TABLE account_class (
     account_id INT NOT NULL,
     class_id INT NOT NULL,
-    role NVARCHAR(50), -- ví d?: 'student', 'teacher'
+    role NVARCHAR(50), -- vï¿½ d?: 'student', 'teacher'
     PRIMARY KEY (account_id, class_id),
     FOREIGN KEY (account_id) REFERENCES account(id) ON DELETE CASCADE,
     FOREIGN KEY (class_id) REFERENCES class(id) ON DELETE CASCADE
@@ -59,7 +59,7 @@ CREATE TABLE attendance (
     account_id INT NOT NULL,
     class_id INT NOT NULL,
     date DATE NOT NULL,
-    status BIT NOT NULL, -- 1: có m?t, 0: v?ng
+    status BIT NOT NULL, -- 1: cï¿½ m?t, 0: v?ng
     FOREIGN KEY (account_id) REFERENCES account(id) ON DELETE CASCADE,
     FOREIGN KEY (class_id) REFERENCES class(id) ON DELETE CASCADE
 );
@@ -83,28 +83,20 @@ INSERT INTO account (MSV, first_name, last_name, birth, password) VALUES
 
 -- role
 INSERT INTO role (name) VALUES
-('Admin'),
 ('Teacher'),
-('Student'),
-('Monitor'),
-('Assistant'),
-('Dean'),
-('Manager'),
-('Supervisor'),
-('Tutor'),
-('Guest');
+('Student');
 
 -- account_role
 INSERT INTO account_role (account_id, role_id) VALUES
-(1, 3),
-(2, 3),
-(3, 3),
-(4, 3),
-(5, 3),
-(6, 3),
-(7, 3),
-(8, 3),
-(9, 3),
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(7, 1),
+(8, 1),
+(9, 1),
 (10, 2);
 
 -- class
