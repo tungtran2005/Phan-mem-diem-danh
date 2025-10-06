@@ -14,7 +14,36 @@ public class AccountRepository : BaseRepository<Account, int>
 
     public override Account? Find(int id)
     {
-        throw new NotImplementedException();
+        const string sql = "select MSV,first_name, last_name,birth from Account where Id = @Id";
+        SqlCommand cmd = new SqlCommand(sql, SqlConnection);
+        cmd.Parameters.AddWithValue("@Id", id);
+
+        SqlConnection.Open();
+        try
+        {
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (!reader.Read()) return null;
+          
+            return new Account
+            {
+                MSV = reader.IsDBNull(reader.GetOrdinal("MSV")) ? string.Empty : reader.GetString(reader.GetOrdinal("MSV")),
+                FirstName = reader.IsDBNull(reader.GetOrdinal("first_name")) ? string.Empty : reader.GetString(reader.GetOrdinal("first_name")),
+                LastName = reader.IsDBNull(reader.GetOrdinal("last_name")) ? string.Empty : reader.GetString(reader.GetOrdinal("last_name")),
+                Birth = reader.IsDBNull(reader.GetOrdinal("birth")) ? DateTime.MinValue : reader.GetDateTime(reader.GetOrdinal("birth"))
+            };
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+        finally
+        {
+            SqlConnection.Close();
+        }
+
+
     }
 
     public override List<Account> List()

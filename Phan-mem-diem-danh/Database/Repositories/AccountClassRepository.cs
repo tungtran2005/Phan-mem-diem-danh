@@ -55,4 +55,5 @@ public class AccountClassRepository : BaseRepository<AccountClass, int>
     {
         throw new NotImplementedException();
     }
+
 }
