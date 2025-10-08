@@ -1,5 +1,5 @@
-using Microsoft.Data.SqlClient;
 using System.Data;
+using Microsoft.Data.SqlClient;
 using Phan_mem_diem_danh.Database.Entities;
 using Phan_mem_diem_danh.Database.Repositories.Base;
 
@@ -28,13 +28,36 @@ VALUES (@MSV, @First, @Last, @Birth, @Pwd);";
 
     public override Account? Find(int id)
     {
-        const string sql = @"SELECT id, MSV, first_name, last_name, birth, password FROM account WHERE id=@Id;";
-        using var conn = CreateConnection();
-        using var cmd = new SqlCommand(sql, conn);
-        cmd.Parameters.Add(P("@Id", id, SqlDbType.Int));
-        conn.Open();
-        using var r = cmd.ExecuteReader();
-        return r.Read() ? Map(r) : null;
+        const string sql = "select MSV,first_name, last_name,birth from Account where Id = @Id";
+        SqlCommand cmd = new SqlCommand(sql, SqlConnection);
+        cmd.Parameters.AddWithValue("@Id", id);
+
+        SqlConnection.Open();
+        try
+        {
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (!reader.Read()) return null;
+          
+            return new Account
+            {
+                MSV = reader.IsDBNull(reader.GetOrdinal("MSV")) ? string.Empty : reader.GetString(reader.GetOrdinal("MSV")),
+                FirstName = reader.IsDBNull(reader.GetOrdinal("first_name")) ? string.Empty : reader.GetString(reader.GetOrdinal("first_name")),
+                LastName = reader.IsDBNull(reader.GetOrdinal("last_name")) ? string.Empty : reader.GetString(reader.GetOrdinal("last_name")),
+                Birth = reader.IsDBNull(reader.GetOrdinal("birth")) ? DateTime.MinValue : reader.GetDateTime(reader.GetOrdinal("birth"))
+            };
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+        finally
+        {
+            SqlConnection.Close();
+        }
+
+
     }
 
     public override List<Account> List()

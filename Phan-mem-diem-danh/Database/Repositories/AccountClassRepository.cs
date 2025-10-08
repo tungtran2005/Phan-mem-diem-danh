@@ -1,5 +1,4 @@
 ﻿using Microsoft.Data.SqlClient;
-using System.Data;
 using Phan_mem_diem_danh.Database.Entities;
 using Phan_mem_diem_danh.Database.Repositories.Base;
 

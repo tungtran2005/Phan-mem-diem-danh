@@ -29,4 +29,9 @@ public class ClassService
     {
         return _configuration.ClassRepository.List();
     }
+
+    public Class? GetClassById(int classId)
+    {
+        return _configuration.ClassRepository.Find(classId);
+    }
 }
