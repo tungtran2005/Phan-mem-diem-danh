@@ -31,33 +31,34 @@ partial class ClassListScreen
     /// </summary>
     private void InitializeComponent()
     {
-        dgvClassList = new DataGridView();
-        ID = new DataGridViewTextBoxColumn();
-        ClassName = new DataGridViewTextBoxColumn();
-        Subject = new DataGridViewTextBoxColumn();
-        Department = new DataGridViewTextBoxColumn();
-        StartDate = new DataGridViewTextBoxColumn();
-        EndDate = new DataGridViewTextBoxColumn();
-        button1 = new Button();
-        button2 = new Button();
-        button3 = new Button();
-        groupBox1 = new GroupBox();
-        btnViewAll = new Button();
-        ((ISupportInitialize)dgvClassList).BeginInit();
+        dgvClassList = new System.Windows.Forms.DataGridView();
+        ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+        ClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+        Subject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+        Department = new System.Windows.Forms.DataGridViewTextBoxColumn();
+        StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+        EndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+        button1 = new System.Windows.Forms.Button();
+        button2 = new System.Windows.Forms.Button();
+        button3 = new System.Windows.Forms.Button();
+        groupBox1 = new System.Windows.Forms.GroupBox();
+        btnViewAll = new System.Windows.Forms.Button();
+        logoutButton = new System.Windows.Forms.Button();
+        ((System.ComponentModel.ISupportInitialize)dgvClassList).BeginInit();
         groupBox1.SuspendLayout();
         SuspendLayout();
         // 
         // dgvClassList
         // 
-        dgvClassList.BackgroundColor = SystemColors.InactiveBorder;
-        dgvClassList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-        dgvClassList.Columns.AddRange(new DataGridViewColumn[] { ID, ClassName, Subject, Department, StartDate, EndDate });
-        dgvClassList.GridColor = SystemColors.ScrollBar;
-        dgvClassList.Location = new Point(-1, 26);
+        dgvClassList.BackgroundColor = System.Drawing.SystemColors.InactiveBorder;
+        dgvClassList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+        dgvClassList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { ID, ClassName, Subject, Department, StartDate, EndDate });
+        dgvClassList.GridColor = System.Drawing.SystemColors.ScrollBar;
+        dgvClassList.Location = new System.Drawing.Point(-1, 26);
         dgvClassList.Name = "dgvClassList";
         dgvClassList.ReadOnly = true;
         dgvClassList.RowHeadersWidth = 51;
-        dgvClassList.Size = new Size(799, 246);
+        dgvClassList.Size = new System.Drawing.Size(799, 246);
         dgvClassList.TabIndex = 1;
         // 
         // ID
@@ -94,7 +95,7 @@ partial class ClassListScreen
         // 
         // StartDate
         // 
-        StartDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        StartDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
         StartDate.HeaderText = "Ngày bắt đầu";
         StartDate.MinimumWidth = 6;
         StartDate.Name = "StartDate";
@@ -102,7 +103,7 @@ partial class ClassListScreen
         // 
         // EndDate
         // 
-        EndDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        EndDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
         EndDate.HeaderText = "Ngày kết thúc";
         EndDate.MinimumWidth = 6;
         EndDate.Name = "EndDate";
@@ -110,27 +111,27 @@ partial class ClassListScreen
         // 
         // button1
         // 
-        button1.Location = new Point(173, 412);
+        button1.Location = new System.Drawing.Point(173, 412);
         button1.Name = "button1";
-        button1.Size = new Size(94, 29);
+        button1.Size = new System.Drawing.Size(94, 29);
         button1.TabIndex = 5;
         button1.Text = "Thêm lớp";
         button1.UseVisualStyleBackColor = true;
         // 
         // button2
         // 
-        button2.Location = new Point(335, 412);
+        button2.Location = new System.Drawing.Point(335, 412);
         button2.Name = "button2";
-        button2.Size = new Size(94, 29);
+        button2.Size = new System.Drawing.Size(94, 29);
         button2.TabIndex = 6;
         button2.Text = "Sửa lớp";
         button2.UseVisualStyleBackColor = true;
         // 
         // button3
         // 
-        button3.Location = new Point(498, 412);
+        button3.Location = new System.Drawing.Point(498, 412);
         button3.Name = "button3";
-        button3.Size = new Size(94, 29);
+        button3.Size = new System.Drawing.Size(94, 29);
         button3.TabIndex = 7;
         button3.Text = "Xóa lớp";
         button3.UseVisualStyleBackColor = true;
@@ -138,46 +139,59 @@ partial class ClassListScreen
         // groupBox1
         // 
         groupBox1.Controls.Add(dgvClassList);
-        groupBox1.Location = new Point(2, 121);
+        groupBox1.Location = new System.Drawing.Point(2, 121);
         groupBox1.Name = "groupBox1";
-        groupBox1.Size = new Size(797, 271);
+        groupBox1.Size = new System.Drawing.Size(797, 271);
         groupBox1.TabIndex = 8;
         groupBox1.TabStop = false;
         groupBox1.Text = "danh sách lớp";
         // 
         // btnViewAll
         // 
-        btnViewAll.Location = new Point(635, 412);
+        btnViewAll.Location = new System.Drawing.Point(635, 412);
         btnViewAll.Name = "btnViewAll";
-        btnViewAll.Size = new Size(94, 29);
+        btnViewAll.Size = new System.Drawing.Size(94, 29);
         btnViewAll.TabIndex = 9;
         btnViewAll.Text = "Xem tất cả lớp";
         btnViewAll.UseVisualStyleBackColor = true;
         btnViewAll.Click += btnViewAll_Click;
         // 
+        // logoutButton
+        // 
+        logoutButton.Location = new System.Drawing.Point(1097, 12);
+        logoutButton.Name = "logoutButton";
+        logoutButton.Size = new System.Drawing.Size(75, 23);
+        logoutButton.TabIndex = 10;
+        logoutButton.Text = "Đăng xuất";
+        logoutButton.UseVisualStyleBackColor = true;
+        logoutButton.Click += logoutButton_Click;
+        // 
         // ClassListScreen
         // 
-        AutoScaleDimensions = new SizeF(8F, 20F);
-        AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(800, 450);
+        AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        ClientSize = new System.Drawing.Size(1184, 861);
+        Controls.Add(logoutButton);
         Controls.Add(btnViewAll);
         Controls.Add(groupBox1);
         Controls.Add(button3);
         Controls.Add(button2);
         Controls.Add(button1);
-        Name = "ClassListScreen";
+        Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
         Text = "ClassListScreen";
-        ((ISupportInitialize)dgvClassList).EndInit();
+        ((System.ComponentModel.ISupportInitialize)dgvClassList).EndInit();
         groupBox1.ResumeLayout(false);
         ResumeLayout(false);
     }
+
+    private System.Windows.Forms.Button logoutButton;
 
     #endregion
     private DataGridView dgvClassList;
     private Button button1;
     private Button button2;
     private Button button3;
-    private GroupBox groupBox1;
+    private System.Windows.Forms.GroupBox groupBox1;
     private DataGridViewTextBoxColumn ID;
     private DataGridViewTextBoxColumn ClassName;
     private DataGridViewTextBoxColumn Subject;

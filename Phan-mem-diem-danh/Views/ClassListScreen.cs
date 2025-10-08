@@ -36,4 +36,11 @@ public partial class ClassListScreen : Form
         var classList = _configuration.ClassService.GetAllClasses();
         ShowClasses(classList);
     }
+
+    private void logoutButton_Click(object sender, EventArgs e)
+    {
+        LoggedInAccount.ClearAccount();
+        Hide();
+        _configuration.LoginScreen.Show();
+    }
 }

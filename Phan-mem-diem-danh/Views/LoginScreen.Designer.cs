@@ -31,53 +31,106 @@ partial class LoginScreen
     /// </summary>
     private void InitializeComponent()
     {
-        txtMSV = new TextBox();
-        txtPassword = new TextBox();
-        btnLogin = new Button();
+        label1 = new System.Windows.Forms.Label();
+        label2 = new System.Windows.Forms.Label();
+        usernameField = new System.Windows.Forms.TextBox();
+        label3 = new System.Windows.Forms.Label();
+        passwordField = new System.Windows.Forms.TextBox();
+        button1 = new System.Windows.Forms.Button();
+        errorMessage = new System.Windows.Forms.Label();
         SuspendLayout();
         // 
-        // txtMSV
+        // label1
         // 
-        txtMSV.Location = new Point(290, 237);
-        txtMSV.Name = "txtMSV";
-        txtMSV.Size = new Size(223, 27);
-        txtMSV.TabIndex = 0;
+        label1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+        label1.Location = new System.Drawing.Point(420, 202);
+        label1.Name = "label1";
+        label1.Size = new System.Drawing.Size(326, 65);
+        label1.TabIndex = 0;
+        label1.Text = "Đăng nhập";
         // 
-        // txtPassword
+        // label2
         // 
-        txtPassword.Location = new Point(290, 292);
-        txtPassword.Name = "txtPassword";
-        txtPassword.Size = new Size(223, 27);
-        txtPassword.TabIndex = 1;
+        label2.Font = new System.Drawing.Font("Segoe UI", 13F);
+        label2.Location = new System.Drawing.Point(420, 267);
+        label2.Name = "label2";
+        label2.Size = new System.Drawing.Size(326, 29);
+        label2.TabIndex = 1;
+        label2.Text = "Tên đăng nhập";
         // 
-        // btnLogin
+        // usernameField
         // 
-        btnLogin.Location = new Point(351, 367);
-        btnLogin.Name = "btnLogin";
-        btnLogin.Size = new Size(94, 29);
-        btnLogin.TabIndex = 2;
-        btnLogin.Text = "Login";
-        btnLogin.UseVisualStyleBackColor = true;
-        btnLogin.Click += button1_Click;
+        usernameField.Location = new System.Drawing.Point(420, 299);
+        usernameField.Name = "usernameField";
+        usernameField.Size = new System.Drawing.Size(326, 23);
+        usernameField.TabIndex = 2;
+        // 
+        // label3
+        // 
+        label3.Font = new System.Drawing.Font("Segoe UI", 13F);
+        label3.Location = new System.Drawing.Point(420, 344);
+        label3.Name = "label3";
+        label3.Size = new System.Drawing.Size(326, 29);
+        label3.TabIndex = 3;
+        label3.Text = "Mật khẩu";
+        // 
+        // passwordField
+        // 
+        passwordField.Location = new System.Drawing.Point(420, 376);
+        passwordField.Name = "passwordField";
+        passwordField.Size = new System.Drawing.Size(326, 23);
+        passwordField.TabIndex = 4;
+        // 
+        // button1
+        // 
+        button1.Font = new System.Drawing.Font("Segoe UI", 13F);
+        button1.Location = new System.Drawing.Point(420, 434);
+        button1.Name = "button1";
+        button1.Size = new System.Drawing.Size(326, 40);
+        button1.TabIndex = 5;
+        button1.Text = "Đăng nhập";
+        button1.UseVisualStyleBackColor = true;
+        button1.Click += button1_Click_1;
+        // 
+        // errorMessage
+        // 
+        errorMessage.Font = new System.Drawing.Font("Segoe UI", 13F);
+        errorMessage.ForeColor = System.Drawing.Color.Red;
+        errorMessage.Location = new System.Drawing.Point(420, 477);
+        errorMessage.Name = "errorMessage";
+        errorMessage.Size = new System.Drawing.Size(326, 72);
+        errorMessage.TabIndex = 6;
         // 
         // LoginScreen
         // 
-        AutoScaleDimensions = new SizeF(8F, 20F);
-        AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(800, 450);
-        Controls.Add(btnLogin);
-        Controls.Add(txtPassword);
-        Controls.Add(txtMSV);
-        Name = "LoginScreen";
+        AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        ClientSize = new System.Drawing.Size(1184, 861);
+        Controls.Add(errorMessage);
+        Controls.Add(button1);
+        Controls.Add(passwordField);
+        Controls.Add(label3);
+        Controls.Add(usernameField);
+        Controls.Add(label2);
+        Controls.Add(label1);
+        Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
         Text = "LoginScreen";
         Load += LoginScreen_Load;
         ResumeLayout(false);
         PerformLayout();
     }
 
-    #endregion
+    private System.Windows.Forms.Label errorMessage;
+    private System.Windows.Forms.TextBox passwordField;
+    private System.Windows.Forms.Button button1;
 
-    private TextBox txtMSV;
-    private TextBox txtPassword;
-    private Button btnLogin;
+    private System.Windows.Forms.Label label3;
+
+    private System.Windows.Forms.TextBox usernameField;
+
+    private System.Windows.Forms.Label label2;
+
+    private System.Windows.Forms.Label label1;
+
+    #endregion
 }

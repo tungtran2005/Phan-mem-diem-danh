@@ -21,8 +21,8 @@ public class AuthService
     {
         Account? account = _accountRepository.FindByMSVAndPassword(msv, password);
         
-        bool isAccountValid = account != null && account.Roles.Any();
-        if (!isAccountValid)
+        bool isExists = account != null;
+        if (!isExists)
         {
             throw new AppException("Sai MSV hoặc mật khẩu.");
         }
