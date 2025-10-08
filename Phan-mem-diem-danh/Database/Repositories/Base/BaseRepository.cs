@@ -10,6 +10,8 @@ public abstract class BaseRepository<T, ID>
         @"Server=(localdb)\MSSQLLocalDB;Database=PMDDDB;Trusted_Connection=True;TrustServerCertificate=True;";
 
     protected SqlConnection CreateConnection() => new SqlConnection(ConnectionString);
+    
+    protected readonly SqlConnection SqlConnection = new SqlConnection(ConnectionString);
 
     protected static SqlParameter P(string name, object? value, SqlDbType type)
     {
