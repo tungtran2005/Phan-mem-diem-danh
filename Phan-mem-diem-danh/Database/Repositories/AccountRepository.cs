@@ -1,5 +1,5 @@
-using System.Data;
 using Microsoft.Data.SqlClient;
+using System.Data;
 using Phan_mem_diem_danh.Database.Entities;
 using Phan_mem_diem_danh.Database.Repositories.Base;
 
@@ -7,96 +7,141 @@ namespace Phan_mem_diem_danh.Database.Repositories;
 
 public class AccountRepository : BaseRepository<Account, int>
 {
-    public override Account Create(Account t)
+    // ====== CRUD theo Id (tiện nếu chỗ khác cần) ======
+    public override Account Create(Account a)
     {
-        throw new NotImplementedException();
+        const string sql = @"
+INSERT INTO account (MSV, first_name, last_name, birth, password)
+OUTPUT INSERTED.id
+VALUES (@MSV, @First, @Last, @Birth, @Pwd);";
+        using var conn = CreateConnection();
+        using var cmd = new SqlCommand(sql, conn);
+        cmd.Parameters.Add(P("@MSV", a.MSV, SqlDbType.NVarChar));
+        cmd.Parameters.Add(P("@First", a.FirstName, SqlDbType.NVarChar));
+        cmd.Parameters.Add(P("@Last", a.LastName, SqlDbType.NVarChar));
+        cmd.Parameters.Add(P("@Birth", a.Birth == default ? null : a.Birth, SqlDbType.Date));
+        cmd.Parameters.Add(P("@Pwd", a.Password, SqlDbType.NVarChar));
+        conn.Open();
+        a.Id = (int)cmd.ExecuteScalar()!;
+        return a;
     }
 
     public override Account? Find(int id)
     {
-        throw new NotImplementedException();
+        const string sql = @"SELECT id, MSV, first_name, last_name, birth, password FROM account WHERE id=@Id;";
+        using var conn = CreateConnection();
+        using var cmd = new SqlCommand(sql, conn);
+        cmd.Parameters.Add(P("@Id", id, SqlDbType.Int));
+        conn.Open();
+        using var r = cmd.ExecuteReader();
+        return r.Read() ? Map(r) : null;
     }
 
     public override List<Account> List()
     {
-        throw new NotImplementedException();
+        const string sql = @"SELECT id, MSV, first_name, last_name, birth, password FROM account ORDER BY id DESC;";
+        using var conn = CreateConnection();
+        using var cmd = new SqlCommand(sql, conn);
+        conn.Open();
+        using var r = cmd.ExecuteReader();
+        var list = new List<Account>();
+        while (r.Read()) list.Add(Map(r));
+        return list;
     }
 
-    public override Account Update(Account t)
+    public override Account Update(Account a)
     {
-        const string sql = @"UPDATE Accounts SET Password = @Password WHERE Id = @Id";
-
-        using var cmd = new SqlCommand(sql, SqlConnection);
-        cmd.Parameters.AddWithValue("@Password", t.Password ?? string.Empty);
-        cmd.Parameters.AddWithValue("@Id", t.Id);
-
-        var shouldClose = false;
-        if (SqlConnection.State != ConnectionState.Open)
-        {
-            SqlConnection.Open();
-            shouldClose = true;
-        }
-
-        try
-        {
-            var affected = cmd.ExecuteNonQuery();
-            if (affected == 0)
-                throw new InvalidOperationException("Không tìm thấy tài khoản để cập nhật.");
-
-            return t;
-        }
-        finally
-        {
-            if (shouldClose)
-                SqlConnection.Close();
-        }
+        const string sql = @"
+UPDATE account
+SET MSV=@MSV, first_name=@First, last_name=@Last, birth=@Birth, password=@Pwd
+WHERE id=@Id;";
+        using var conn = CreateConnection();
+        using var cmd = new SqlCommand(sql, conn);
+        cmd.Parameters.Add(P("@MSV", a.MSV, SqlDbType.NVarChar));
+        cmd.Parameters.Add(P("@First", a.FirstName, SqlDbType.NVarChar));
+        cmd.Parameters.Add(P("@Last", a.LastName, SqlDbType.NVarChar));
+        cmd.Parameters.Add(P("@Birth", a.Birth == default ? null : a.Birth, SqlDbType.Date));
+        cmd.Parameters.Add(P("@Pwd", a.Password, SqlDbType.NVarChar));
+        cmd.Parameters.Add(P("@Id", a.Id, SqlDbType.Int));
+        conn.Open();
+        cmd.ExecuteNonQuery();
+        return a;
     }
 
     public override bool Delete(int id)
     {
-        throw new NotImplementedException();
+        const string sql = @"DELETE FROM account WHERE id=@Id;";
+        using var conn = CreateConnection();
+        using var cmd = new SqlCommand(sql, conn);
+        cmd.Parameters.Add(P("@Id", id, SqlDbType.Int));
+        conn.Open();
+        return cmd.ExecuteNonQuery() > 0;
+    }
+
+    private static Account Map(SqlDataReader r) => new Account
+    {
+        Id = r.GetInt32(r.GetOrdinal("id")),
+        MSV = r["MSV"] as string ?? "",
+        FirstName = r["first_name"] as string ?? "",
+        LastName = r["last_name"] as string ?? "",
+        Birth = r["birth"] is DBNull ? DateTime.MinValue : (DateTime)r["birth"],
+        Password = r["password"] as string ?? ""
+    };
+
+    // ====== API theo MSV (phần bạn cần) ======
+    public Account? FindByMSV(string msv)
+    {
+        const string sql = @"SELECT id, MSV, first_name, last_name, birth, password FROM account WHERE MSV=@MSV;";
+        using var conn = CreateConnection();
+        using var cmd = new SqlCommand(sql, conn);
+        cmd.Parameters.Add(P("@MSV", msv, SqlDbType.NVarChar));
+        conn.Open();
+        using var r = cmd.ExecuteReader();
+        return r.Read() ? Map(r) : null;
+    }
+
+    public Account UpsertByMSV(Account a)
+    {
+        var existed = FindByMSV(a.MSV);
+        if (existed == null)
+        {
+            return Create(a);
+        }
+        else
+        {
+            a.Id = existed.Id;
+            return Update(a);
+        }
+    }
+
+    public bool DeleteByMSV(string msv)
+    {
+        const string sql = @"DELETE FROM account WHERE MSV=@MSV;";
+        using var conn = CreateConnection();
+        using var cmd = new SqlCommand(sql, conn);
+        cmd.Parameters.Add(P("@MSV", msv, SqlDbType.NVarChar));
+        conn.Open();
+        return cmd.ExecuteNonQuery() > 0;
     }
 
     public Account? FindByMSVAndPassword(string msv, string password)
     {
-        Account? account = null;
-        string query = @"
-            SELECT a.id, a.MSV, a.password, r.id, r.name
-            FROM account a
-            JOIN account_role ar ON a.id = ar.account_id
-            JOIN Role r ON ar.role_id = r.id
-            WHERE a.MSV = @msv AND a.password = @password";
-
-        using (SqlCommand cmd = new SqlCommand(query, SqlConnection))
+        const string sql = @"SELECT id, MSV, first_name, last_name, birth, password
+                         FROM account WHERE MSV=@MSV AND password=@Pwd;";
+        using var conn = CreateConnection();
+        using var cmd = new SqlCommand(sql, conn);
+        cmd.Parameters.Add(P("@MSV", msv, SqlDbType.NVarChar));
+        cmd.Parameters.Add(P("@Pwd", password, SqlDbType.NVarChar));
+        conn.Open();
+        using var r = cmd.ExecuteReader();
+        return r.Read() ? new Account
         {
-            cmd.Parameters.AddWithValue("@msv", msv);
-            cmd.Parameters.AddWithValue("@password", password);
-
-            SqlConnection.Open();
-            using (SqlDataReader reader = cmd.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    if (account == null)
-                    {
-                        account = new Account
-                        {
-                            Id = reader.GetInt32(0),
-                            MSV = reader.GetString(1),                          
-                            Password = reader.GetString(2),
-                            Roles = new List<Role>()
-                        };
-                    }
-                    Role role = new Role
-                    {
-                        Id = reader.GetInt32(3),
-                        Name = reader.GetString(4)
-                    };
-                    account.Roles.Add(role);
-                }
-            }
-            SqlConnection.Close();
-        }
-        return account;
+            Id = r.GetInt32(r.GetOrdinal("id")),
+            MSV = r["MSV"] as string ?? "",
+            FirstName = r["first_name"] as string ?? "",
+            LastName = r["last_name"] as string ?? "",
+            Birth = r["birth"] is DBNull ? DateTime.MinValue : (DateTime)r["birth"],
+            Password = r["password"] as string ?? ""
+        } : null;
     }
 }
